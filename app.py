@@ -1,6 +1,7 @@
 #py -m pip install langchain langchain-community langchain-groq
 #py -m pip install streamlit
-#py -m pip install python-dotenv
+#py -m pip install python-dotenvpy 
+# py -m pip install streamlit
 
 #python -m streamlit run app.py
 
@@ -39,7 +40,7 @@ platform = st.selectbox("Plataforma:", ['Instagram', 'Facebook', 'LinkedIn', 'Bl
 tone = st.selectbox("Tom:", ['Normal', 'Informativo', 'Inspirador', 'Urgente', 'Informal'])
 length = st.selectbox("Tamanho:", ['Curto', 'Médio', 'Longo'])
 audience = st.selectbox("Público-alvo:", ['Geral', 'Jovens adultos', 'Famílias', 'Idosos', 'Adolescentes'])
-cta = st.checkbox("Incluir CTA")
+cta = st.text_input("Chamada para Ação (CTA):", placeholder="Ex: Clique para aproveitar a promoção!")
 hashtags = st.checkbox("Retornar Hashtags")
 keywords = st.text_area("Palavras-chave (SEO):", placeholder="Ex: bem-estar, medicina preventiva...")
 
@@ -51,7 +52,7 @@ if st.button("Gerar conteúdo"):
   - Tom: {tone}.
   - Público-alvo: {audience}.
   - Comprimento: {length}.
-  - {"Inclua uma chamada para ação clara." if cta else "Não inclua chamada para ação"}
+  - {"Inclua ao final do texto esta chamada para ação:" + cta if cta else "Não inclua chamada para ação"}
   - {"Retorne ao final do texto hashtags relevantes." if hashtags else "Não inclua hashtags."}
   {"- Palavras-chave que devem estar presentes nesse texto (para SEO): " + keywords if keywords else ""}
   """
